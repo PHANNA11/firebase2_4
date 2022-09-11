@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter FireStore'),
+      home: _getInitFirebase,
     );
   }
 }
@@ -43,6 +43,31 @@ class MainPoinPage extends StatelessWidget {
           }),
     );
   }
+}
+
+get _getInitFirebase {
+  return FutureBuilder(
+    future: Firebase.initializeApp(),
+    builder: (context, snapshot) {
+      if (snapshot.hasError) {
+        return const Scaffold(
+          body: Center(
+            child: Icon(
+              Icons.info,
+              size: 35,
+              color: Colors.red,
+            ),
+          ),
+        );
+      }
+      if (snapshot.connectionState == ConnectionState.done) {
+        return const SecondScreen();
+      }
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    },
+  );
 }
 
 class MyHomePage extends StatefulWidget {
