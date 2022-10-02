@@ -1,5 +1,6 @@
 import 'package:firebase_auth2_4/views/add_user_screen.dart';
 import 'package:firebase_auth2_4/views/get_student_widget.dart';
+import 'package:firebase_auth2_4/views/synfile_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -34,6 +35,17 @@ class _SecondScreenState extends State<SecondScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Second screen'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SynFileStorage(),
+                    ));
+              },
+              icon: const Icon(Icons.image))
+        ],
       ),
       body: FutureBuilder(
         future: temDocsId,

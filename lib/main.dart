@@ -3,11 +3,19 @@ import 'package:firebase_auth2_4/controllers/auth_controller.dart';
 import 'package:firebase_auth2_4/models/auth_model.dart';
 import 'package:firebase_auth2_4/views/second_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // final emulatorHost =
+  //     (!kIsWeb && defaultTargetPlatform == TargetPlatform.android)
+  //         ? '10.0.2.2'
+  //         : 'localhost';
+
+  // await FirebaseStorage.instance.useStorageEmulator(emulatorHost, 9199);
   runApp(const MyApp());
 }
 
