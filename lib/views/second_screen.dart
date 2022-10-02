@@ -1,4 +1,5 @@
-import 'package:firebase_auth2_4/get_student_widget.dart';
+import 'package:firebase_auth2_4/views/add_user_screen.dart';
+import 'package:firebase_auth2_4/views/get_student_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -54,6 +55,19 @@ class _SecondScreenState extends State<SecondScreen> {
             },
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddUserScreen(),
+              ));
+        },
+        child: const Icon(
+          Icons.add,
+          size: 30,
+        ),
       ),
     );
   }

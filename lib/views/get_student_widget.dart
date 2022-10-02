@@ -17,9 +17,9 @@ class GetStudentData extends StatelessWidget {
               snapshot.data!.data() as Map<String, dynamic>;
           return Card(
             child: ListTile(
-                leading: CircleAvatar(
-                  child: Text(data['id'].toString()),
-                ),
+                // leading: CircleAvatar(
+                //   child: Text(data['id'].toString()),
+                // ),
                 title: Text(data['name'].toString())),
           );
         }
