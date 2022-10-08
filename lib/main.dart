@@ -1,3 +1,4 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth2_4/controllers/auth_controller.dart';
 import 'package:firebase_auth2_4/models/auth_model.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Admob.initialize();
   // final emulatorHost =
   //     (!kIsWeb && defaultTargetPlatform == TargetPlatform.android)
   //         ? '10.0.2.2'

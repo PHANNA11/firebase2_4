@@ -30,6 +30,7 @@ dependencies:
   firebase_auth: ^3.6.4
   firebase_core: ^1.21.0
   google_fonts: ^3.0.1
+  admob_flutter: ^3.0.0
   flutter:
     sdk: flutter
 
