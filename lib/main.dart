@@ -1,6 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth2_4/controllers/auth_controller.dart';
-import 'package:firebase_auth2_4/models/auth_model.dart';
 import 'package:firebase_auth2_4/views/second_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
