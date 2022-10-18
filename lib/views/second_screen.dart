@@ -1,3 +1,4 @@
+import 'package:firebase_auth2_4/models/lecture_model.dart';
 import 'package:firebase_auth2_4/models/student_model.dart';
 import 'package:firebase_auth2_4/views/add_user_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,17 @@ class _SecondScreenState extends State<SecondScreen> {
   Future<Student?> getStudent(String docId) async {
     final docStudent =
         FirebaseFirestore.instance.collection('student').doc(docId);
+
     final snapshot = await docStudent.get();
+    final lect = await docStudent
+        .collection('lecture')
+        .doc('jtUSHeoTLpOlt6QhQUCw')
+        .get();
     if (snapshot.exists) {
+      Lecture.fromJson(lect.data()!);
+      Student stu = Student.fromJson(snapshot.data()!);
+      stu.displayData();
+      //print('Data:${snapshot.data()!}');
       return Student.fromJson(snapshot.data()!);
     }
     return Student.fromJson(snapshot.data()!);
@@ -78,7 +88,7 @@ class _SecondScreenState extends State<SecondScreen> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => AddUserScreen(),
+                builder: (context) => const AddUserScreen(),
               ));
         },
         child: const Icon(
@@ -92,9 +102,14 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget buildViewStudent(Student student) {
     return Card(
       child: ListTile(
-          leading: SizedBox(
-              height: 60, width: 60, child: Image.network(student.image)),
-          title: Text(student.name)),
+        leading: SizedBox(
+            height: 60, width: 60, child: Image.network(student.image)),
+        title: Text(student.name),
+        // subtitle: Column(
+        //   children: List.generate(student.nickname.length,
+        //       (index) => Text(student.nickname[index]['name'])),
+        // ),
+      ),
     );
   }
 }
